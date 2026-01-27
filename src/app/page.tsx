@@ -14,10 +14,10 @@ const forgeHooks = [
 
 const platforms = [
   { icon: "🔄", name: "n8n", desc: "Community nodes" },
-  { icon: "⚙️", name: "Make", desc: "Custom modules" },
   { icon: "⚡", name: "Power Automate", desc: "Custom connectors" },
-  { icon: "🔗", name: "Zapier", desc: "Private app" },
   { icon: "🎫", name: "ServiceNow", desc: "Flow Designer" },
+  { icon: "☁️", name: "Salesforce", desc: "Flow actions" },
+  { icon: "🏢", name: "Mendix", desc: "Microflows" },
   { icon: "💡", name: "Any HTTP", desc: "REST API" },
 ];
 
@@ -48,7 +48,7 @@ export default function Home() {
           </h1>
           
           <p className="text-xl text-muted max-w-2xl mx-auto mb-10">
-            LeForge extends n8n, Make, Power Automate, and Zapier with powerful AI, cryptography, math, and data processing capabilities. Deploy on your own infrastructure.
+            LeForge extends n8n, Power Automate, ServiceNow, and more with powerful AI, cryptography, math, and data processing capabilities. Deploy on your own infrastructure.
           </p>
           
           <div className="flex flex-wrap gap-4 justify-center mb-12">
@@ -67,10 +67,10 @@ export default function Home() {
             <span>Works with:</span>
             <div className="flex gap-4 text-2xl">
               <span title="n8n">🔄</span>
-              <span title="Make">⚙️</span>
               <span title="Power Automate">⚡</span>
-              <span title="Zapier">🔗</span>
               <span title="ServiceNow">🎫</span>
+              <span title="Salesforce">☁️</span>
+              <span title="Mendix">🏢</span>
             </div>
           </div>
         </div>

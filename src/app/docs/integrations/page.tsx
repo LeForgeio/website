@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Integrations - LeForge",
-  description: "Connect LeForge to n8n, Make, Power Automate, Zapier, and more.",
+  description: "Connect LeForge to n8n, Power Automate, ServiceNow, Salesforce, and more.",
 };
 
 const integrations = [
@@ -16,15 +16,6 @@ const integrations = [
     docLink: "/docs/integrations/n8n",
   },
   {
-    id: "make",
-    name: "Make (Integromat)",
-    icon: "⚙️",
-    description: "Visual automation platform with custom LeForge modules.",
-    status: "Available",
-    installMethod: "Custom App",
-    docLink: "/docs/integrations/make",
-  },
-  {
     id: "power-automate",
     name: "Power Automate",
     icon: "⚡",
@@ -34,15 +25,6 @@ const integrations = [
     docLink: "/docs/integrations/power-automate",
   },
   {
-    id: "zapier",
-    name: "Zapier",
-    icon: "🔗",
-    description: "Connect LeForge to 5000+ apps via private Zapier integration.",
-    status: "Available",
-    installMethod: "Private App",
-    docLink: "/docs/integrations/zapier",
-  },
-  {
     id: "servicenow",
     name: "ServiceNow",
     icon: "🎫",
@@ -50,6 +32,42 @@ const integrations = [
     status: "Available",
     installMethod: "Spoke",
     docLink: "/docs/integrations/servicenow",
+  },
+  {
+    id: "salesforce",
+    name: "Salesforce",
+    icon: "☁️",
+    description: "CRM platform integration with Flow actions and Apex callouts.",
+    status: "Available",
+    installMethod: "External Services",
+    docLink: "/docs/integrations/salesforce",
+  },
+  {
+    id: "mendix",
+    name: "Mendix",
+    icon: "🏢",
+    description: "Low-code platform integration via microflows and REST consumption.",
+    status: "Available",
+    installMethod: "REST Service",
+    docLink: "/docs/integrations/mendix",
+  },
+  {
+    id: "outsystems",
+    name: "OutSystems",
+    icon: "🔷",
+    description: "Enterprise low-code platform with REST API consumption.",
+    status: "Available",
+    installMethod: "REST API",
+    docLink: "/docs/integrations/outsystems",
+  },
+  {
+    id: "nintex",
+    name: "Nintex",
+    icon: "📋",
+    description: "Process automation and workflow management platform.",
+    status: "Available",
+    installMethod: "Web Request",
+    docLink: "/docs/integrations/nintex",
   },
   {
     id: "rest-api",
