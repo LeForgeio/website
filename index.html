@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeForge - Self-Hosted AI & Compute Platform for Workflow Automation</title>
+    <meta name="description" content="Extend n8n, Make, Power Automate, and Zapier with powerful AI, cryptography, math, and data processing capabilities. Self-hosted on your own infrastructure.">
+    <meta name="keywords" content="workflow automation, n8n, make, zapier, power automate, self-hosted, AI, LLM, microservices, docker">
+    <link rel="canonical" href="https://leforge.io">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="LeForge - Self-Hosted AI & Compute Platform">
+    <meta property="og:description" content="Extend your workflow automation tools with powerful AI, cryptography, and data processing capabilities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://leforge.io">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #f97316;
+            --primary-dark: #ea580c;
+            --primary-light: #fdba74;
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --bg-card: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: rgba(255,255,255,0.1);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--text); 
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { 
+            background: var(--primary-dark); 
+            transform: translateY(-1px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover { 
+            background: var(--primary); 
+            color: white; 
+        }
+        .btn-ghost {
+            background: transparent;
+            color: var(--text);
+        }
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .btn-sm { padding: 8px 16px; font-size: 0.9rem; }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 640px;
+            margin: 0 auto 40px;
+        }
+        .hero-buttons { 
+            display: flex; 
+            gap: 16px; 
+            justify-content: center; 
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+        .hero-platforms {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .platform-logos {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .platform-logos span {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-darker);
+        }
+        .trust-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            text-align: center;
+        }
+        .trust-item strong {
+            display: block;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        .trust-item span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 100px 0;
+            background: var(--bg-darker);
+        }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .problem h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+        .problem p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+        .problem-list {
+            list-style: none;
+        }
+        .problem-list li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+        .problem-list li::before {
+            content: '✗';
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .solution-list li::before {
+            content: '✓';
+            color: #22c55e;
+        }
+
+        /* Services Section */
+        .services { padding: 100px 0; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+        }
+        .service-card h3 { 
+            font-size: 1.25rem;
+            margin-bottom: 12px; 
+        }
+        .service-card p { 
+            color: var(--text-muted); 
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+        .service-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 100px 0;
+            background: var(--bg-darker);
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 64px;
+        }
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 24px;
+        }
+        .step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+        .step p {
+            color: var(--text-muted);
+        }
+
+        /* Code Example */
+        .code-section { padding: 100px 0; }
+        .code-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .code-content h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+        .code-content p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        .code-block {
+            background: #0d1117;
+            border-radius: 12px;
+            padding: 24px;
+            overflow-x: auto;
+            font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+        }
+        .code-block code { color: #e6edf3; white-space: pre; }
+        .code-comment { color: #8b949e; }
+        .code-string { color: #a5d6ff; }
+        .code-keyword { color: #ff7b72; }
+
+        /* Platforms */
+        .platforms { 
+            padding: 100px 0; 
+            background: var(--bg-darker);
+        }
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .platform-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s;
+        }
+        .platform-card:hover {
+            border-color: var(--primary);
+        }
+        .platform-card .icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        .platform-card h3 {
+            margin-bottom: 8px;
+        }
+        .platform-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Features */
+        .features { padding: 100px 0; }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        .feature {
+            display: flex;
+            gap: 20px;
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        .feature h4 {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .feature p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            position: relative;
+        }
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+        .cta p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 64px 0 32px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 16px;
+            font-size: 0.95rem;
+        }
+        .footer-column h4 {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+        .footer-column a {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .problem-grid,
+            .code-wrapper,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .nav-links { display: none; }
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .section-header h2 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">🔥 Le<span>Forge</span></a>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#platforms">Platforms</a>
+                <a href="#features">Features</a>
+                <a href="https://github.com/LeForgeio/leforge/tree/master/docs">Docs</a>
+            </div>
+            <a href="https://github.com/LeForgeio/leforge" class="btn btn-sm">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+            </a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">🏠 100% Self-Hosted • Open Source</span>
+                <h1>Supercharge Your Workflows<br>with <span class="gradient">AI & Compute</span></h1>
+                <p>LeForge extends n8n, Make, Power Automate, and Zapier with powerful AI, cryptography, math, and data processing capabilities. Deploy on your own infrastructure.</p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/LeForgeio/leforge#quick-start" class="btn">
+                        Get Started Free
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="https://github.com/LeForgeio/leforge" class="btn btn-outline">View Documentation</a>
+                </div>
+                <div class="hero-platforms">
+                    <span>Works with:</span>
+                    <div class="platform-logos">
+                        <span title="n8n">🔄</span>
+                        <span title="Make">⚙️</span>
+                        <span title="Power Automate">⚡</span>
+                        <span title="Zapier">🔗</span>
+                        <span title="ServiceNow">🎫</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-item">
+                    <strong>15+</strong>
+                    <span>ForgeHook Plugins</span>
+                </div>
+                <div class="trust-item">
+                    <strong>6+</strong>
+                    <span>Platform Integrations</span>
+                </div>
+                <div class="trust-item">
+                    <strong>100%</strong>
+                    <span>Self-Hosted</span>
+                </div>
+                <div class="trust-item">
+                    <strong>MIT</strong>
+                    <span>Open Source License</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <div class="problem-grid">
+                <div>
+                    <h2>The Problem with Workflow Automation</h2>
+                    <p>Low-code platforms are great for connecting services, but struggle when you need real computing power:</p>
+                    <ul class="problem-list">
+                        <li>Complex math and statistical analysis</li>
+                        <li>AI/LLM integration with local models</li>
+                        <li>PDF generation and manipulation</li>
+                        <li>OCR and image processing</li>
+                        <li>Encryption and secure data handling</li>
+                        <li>Vector search and embeddings</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>LeForge is the Solution</h2>
+                    <p>A modular microservices platform that adds compute capabilities to any workflow tool:</p>
+                    <ul class="problem-list solution-list">
+                        <li>Pre-built ForgeHooks for common tasks</li>
+                        <li>Native nodes/modules for your platform</li>
+                        <li>Self-hosted on your infrastructure</li>
+                        <li>No vendor lock-in or data leaving your network</li>
+                        <li>Horizontally scalable with Docker/K8s</li>
+                        <li>Open source and extensible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>ForgeHook Plugin Library</h2>
+                <p>Ready-to-use microservices that plug into your workflows. Each ForgeHook is independently deployable and scalable.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>LLM Service</h3>
+                    <p>Chat completions, embeddings, and text generation via OpenAI-compatible API or local models like Ollama and LM Studio.</p>
+                    <div class="service-tags">
+                        <span class="tag">GPT-4</span>
+                        <span class="tag">Ollama</span>
+                        <span class="tag">Claude</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔐</div>
+                    <h3>Crypto Service</h3>
+                    <p>Hashing (MD5, SHA-256/512), AES-GCM encryption, RSA key pairs, digital signatures, and UUID generation.</p>
+                    <div class="service-tags">
+                        <span class="tag">AES-256</span>
+                        <span class="tag">RSA</span>
+                        <span class="tag">SHA</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔢</div>
+                    <h3>Math Service</h3>
+                    <p>Expression evaluation, statistics (mean, median, std dev, correlation), matrix operations, and financial calculations.</p>
+                    <div class="service-tags">
+                        <span class="tag">NumPy</span>
+                        <span class="tag">Statistics</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>PDF Service</h3>
+                    <p>Generate PDFs from HTML/templates, merge multiple PDFs, split pages, extract text, and fill form fields.</p>
+                    <div class="service-tags">
+                        <span class="tag">Puppeteer</span>
+                        <span class="tag">PDF-lib</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👁️</div>
+                    <h3>OCR Service</h3>
+                    <p>Extract text from images and scanned documents using PaddleOCR and Tesseract with 100+ language support.</p>
+                    <div class="service-tags">
+                        <span class="tag">PaddleOCR</span>
+                        <span class="tag">Tesseract</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🖼️</div>
+                    <h3>Image Service</h3>
+                    <p>Resize, crop, rotate, convert formats (JPEG, PNG, WebP, AVIF), optimize compression, and add watermarks.</p>
+                    <div class="service-tags">
+                        <span class="tag">Sharp</span>
+                        <span class="tag">WebP</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Vector Service</h3>
+                    <p>Vector similarity search using Qdrant for semantic search, RAG applications, and recommendation systems.</p>
+                    <div class="service-tags">
+                        <span class="tag">Qdrant</span>
+                        <span class="tag">Embeddings</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Data Transform</h3>
+                    <p>Convert between JSON, XML, CSV, and YAML. JSONPath queries, XML transformations, and schema validation.</p>
+                    <div class="service-tags">
+                        <span class="tag">JSONPath</span>
+                        <span class="tag">XSLT</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="https://github.com/LeForgeio/registry" class="btn btn-outline">Browse All ForgeHooks →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Up and Running in Minutes</h2>
+                <p>LeForge is designed for simplicity. Deploy once, use everywhere.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Deploy with Docker</h3>
+                    <p>Single command deployment. docker-compose up and you're running all services with Kong API Gateway.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Install Platform Nodes</h3>
+                    <p>Add LeForge nodes to n8n, Make modules, or configure webhooks in Power Automate and Zapier.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Build Powerful Workflows</h3>
+                    <p>Combine AI, data processing, and automation. Your workflows now have compute superpowers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-section">
+        <div class="container">
+            <div class="code-wrapper">
+                <div class="code-content">
+                    <h2>Simple REST API</h2>
+                    <p>Every ForgeHook exposes a clean REST API. Use the SDK, native platform nodes, or call directly via HTTP.</p>
+                    <ul class="problem-list solution-list">
+                        <li>OpenAPI/Swagger documentation</li>
+                        <li>JavaScript, Python, and .NET SDKs</li>
+                        <li>API key authentication</li>
+                        <li>Rate limiting and caching built-in</li>
+                    </ul>
+                    <a href="https://github.com/LeForgeio/leforge/tree/master/docs/api-reference.md" class="btn btn-outline" style="margin-top: 24px;">API Reference →</a>
+                </div>
+                <div class="code-block">
+                    <code><span class="code-comment"># Hash data with SHA-256</span>
+curl -X POST https://your-server/api/v1/crypto/hash \
+  -H <span class="code-string">"Authorization: Bearer $API_KEY"</span> \
+  -H <span class="code-string">"Content-Type: application/json"</span> \
+  -d <span class="code-string">'{"data": "hello", "algorithm": "sha256"}'</span>
+
+<span class="code-comment"># Generate PDF from HTML</span>
+curl -X POST https://your-server/api/v1/pdf/generate \
+  -H <span class="code-string">"Authorization: Bearer $API_KEY"</span> \
+  -d <span class="code-string">'{"html": "&lt;h1&gt;Invoice&lt;/h1&gt;..."}'</span>
+
+<span class="code-comment"># Chat with LLM</span>
+curl -X POST https://your-server/api/v1/llm/chat \
+  -H <span class="code-string">"Authorization: Bearer $API_KEY"</span> \
+  -d <span class="code-string">'{"messages": [{"role": "user", 
+     "content": "Summarize this document..."}]}'</span></code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="platforms" id="platforms">
+        <div class="container">
+            <div class="section-header">
+                <h2>Native Platform Integrations</h2>
+                <p>Pre-built nodes and modules for the most popular workflow automation platforms.</p>
+            </div>
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="icon">🔄</div>
+                    <h3>n8n</h3>
+                    <p>Community nodes ready to install</p>
+                </div>
+                <div class="platform-card">
+                    <div class="icon">⚙️</div>
+                    <h3>Make</h3>
+                    <p>Custom modules for all services</p>
+                </div>
+                <div class="platform-card">
+                    <div class="icon">⚡</div>
+                    <h3>Power Automate</h3>
+                    <p>Custom connectors available</p>
+                </div>
+                <div class="platform-card">
+                    <div class="icon">🔗</div>
+                    <h3>Zapier</h3>
+                    <p>Private Zapier app integration</p>
+                </div>
+                <div class="platform-card">
+                    <div class="icon">🎫</div>
+                    <h3>ServiceNow</h3>
+                    <p>Flow Designer actions</p>
+                </div>
+                <div class="platform-card">
+                    <div class="icon">💡</div>
+                    <h3>Any HTTP Client</h3>
+                    <p>REST API works everywhere</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built for Production</h2>
+                <p>Enterprise-ready features out of the box.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🏠</div>
+                    <div>
+                        <h4>100% Self-Hosted</h4>
+                        <p>Your data never leaves your infrastructure. Deploy on-premise or in your own cloud.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <div>
+                        <h4>Secure by Default</h4>
+                        <p>API key authentication, CORS protection, rate limiting, and input validation on all endpoints.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📈</div>
+                    <div>
+                        <h4>Horizontally Scalable</h4>
+                        <p>Each ForgeHook scales independently. Run one instance or hundreds with Kubernetes.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <div>
+                        <h4>Observable</h4>
+                        <p>Prometheus metrics, structured JSON logging, and request tracing across all services.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔌</div>
+                    <div>
+                        <h4>API Gateway</h4>
+                        <p>Kong Gateway handles routing, authentication, rate limiting, and caching.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📚</div>
+                    <div>
+                        <h4>Well Documented</h4>
+                        <p>OpenAPI specs, SDK documentation, and examples for every ForgeHook.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Supercharge Your Workflows?</h2>
+                <p>Join developers who are building smarter automations with LeForge. Free and open source forever.</p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/LeForgeio/leforge#quick-start" class="btn">
+                        Get Started Now
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="https://github.com/LeForgeio/leforge" class="btn btn-ghost">Star on GitHub ⭐</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">🔥 Le<span>Forge</span></a>
+                    <p>Open source AI & compute platform for workflow automation. Self-hosted on your own infrastructure.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="#services">ForgeHooks</a>
+                    <a href="#platforms">Integrations</a>
+                    <a href="#features">Features</a>
+                    <a href="https://github.com/LeForgeio/leforge/tree/master/docs/changelog.md">Changelog</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="https://github.com/LeForgeio/leforge/tree/master/docs">Documentation</a>
+                    <a href="https://github.com/LeForgeio/leforge/tree/master/docs/api-reference.md">API Reference</a>
+                    <a href="https://github.com/LeForgeio/registry">Plugin Registry</a>
+                    <a href="https://github.com/LeForgeio/leforge/tree/master/sdk">SDKs</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Community</h4>
+                    <a href="https://github.com/LeForgeio/leforge">GitHub</a>
+                    <a href="https://github.com/LeForgeio/leforge/issues">Issues</a>
+                    <a href="https://github.com/LeForgeio/leforge/discussions">Discussions</a>
+                    <a href="https://github.com/LeForgeio/leforge/tree/master/docs/contributing.md">Contributing</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 LeForge. Open source under the MIT License.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/LeForgeio/leforge/blob/master/LICENSE">License</a>
+                    <a href="https://github.com/LeForgeio">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
