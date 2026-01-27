@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ConstructionGate from "@/components/ConstructionGate";
 
 const forgeHooks = [
   { icon: "🤖", name: "LLM Service", desc: "Chat completions, embeddings via OpenAI API or local models like Ollama", tags: ["GPT-4", "Ollama", "Claude"] },
@@ -31,6 +32,7 @@ const features = [
 
 export default function Home() {
   return (
+    <ConstructionGate>
     <div>
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden">
@@ -218,5 +220,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </ConstructionGate>
   );
 }
