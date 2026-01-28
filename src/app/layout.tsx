@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "LeForge - Self-Hosted AI & Compute Platform",
-  description: "Extend n8n, Power Automate, ServiceNow, and more with powerful AI, cryptography, math, and data processing capabilities. Self-hosted on your own infrastructure.",
-  keywords: "workflow automation, n8n, servicenow, power automate, self-hosted, AI, LLM, microservices, docker",
+  description: "Extend n8n, Power Automate, ServiceNow, Nintex, and more with powerful AI, cryptography, math, and data processing capabilities. Self-hosted on your own infrastructure.",
+  keywords: "workflow automation, n8n, servicenow, nintex, power automate, self-hosted, AI, LLM, microservices, docker",
 };
 
 function Header() {
