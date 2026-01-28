@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Purple/Violet theme - softer, matches core app */
-  --color-primary: hsl(250, 60%, 60%);
-  --color-primary-dark: hsl(250, 60%, 50%);
-  --color-primary-light: hsl(250, 60%, 70%);
+  /* Blue-teal accent - colorblind friendly, easier to distinguish */
+  --color-primary: hsl(200, 80%, 55%);
+  --color-primary-dark: hsl(200, 80%, 45%);
+  --color-primary-light: hsl(200, 80%, 65%);
   
   --color-background: hsl(220, 25%, 6%);
   --color-background-secondary: hsl(220, 30%, 4%);
@@ -12,8 +12,8 @@
   --color-card-hover: hsl(220, 20%, 12%);
   
   --color-foreground: hsl(220, 10%, 95%);
-  --color-muted: hsl(220, 10%, 55%);
-  --color-border: hsl(220, 15%, 16%);
+  --color-muted: hsl(220, 10%, 60%);
+  --color-border: hsl(220, 15%, 18%);
   
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -36,6 +36,16 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
+}
+
+/* Gradient mesh background - matches core app */
+.gradient-mesh {
+  background: 
+    radial-gradient(at 40% 20%, hsl(200 80% 55% / 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsl(220 70% 50% / 0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsl(200 90% 50% / 0.06) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsl(220 70% 50% / 0.04) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsl(200 80% 50% / 0.06) 0px, transparent 50%);
 }
 
 /* Custom scrollbar */

@@ -33,10 +33,9 @@ const features = [
 export default function Home() {
   return (
     <ConstructionGate>
-    <div>
+    <div className="gradient-mesh">
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(124,58,237,0.15)_0%,_transparent_70%)]" />
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
           <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/20 mb-6">
             🏠 100% Self-Hosted • Open Source
@@ -139,7 +138,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-12">
             {[
               { num: "1", title: "Deploy with Docker", desc: "Single command deployment. docker-compose up and you're running all services with Kong API Gateway." },
-              { num: "2", title: "Install Platform Nodes", desc: "Add LeForge nodes to n8n, Make modules, or configure webhooks in Power Automate and Zapier." },
+              { num: "2", title: "Install Platform Nodes", desc: "Add LeForge nodes to n8n, configure custom connectors in Power Automate, or use REST API with any platform." },
               { num: "3", title: "Build Powerful Workflows", desc: "Combine AI, data processing, and automation. Your workflows now have compute superpowers." },
             ].map((step) => (
               <div key={step.num} className="text-center">
@@ -200,7 +199,6 @@ export default function Home() {
 
       {/* CTA */}
       <section className="py-24 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(124,58,237,0.1)_0%,_transparent_70%)]" />
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-4xl font-bold mb-6">Ready to Supercharge Your Workflows?</h2>
           <p className="text-muted text-lg max-w-xl mx-auto mb-10">
