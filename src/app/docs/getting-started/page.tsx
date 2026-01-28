@@ -15,7 +15,7 @@ export default function GettingStartedPage() {
       <ul>
         <li><strong>Docker</strong> and <strong>Docker Compose</strong> installed</li>
         <li>At least 4GB of available RAM</li>
-        <li>Ports 8000, 5432, 6379 available</li>
+        <li>Ports 3000, 5432, 6379 available</li>
       </ul>
 
       <h2>Step 1: Clone the Repository</h2>
@@ -50,7 +50,7 @@ docker-compose ps`}</code>
       <h2>Step 4: Verify Installation</h2>
       <p>Test that the API is responding:</p>
       <pre className="bg-background-secondary p-4 rounded-lg">
-        <code>{`curl http://localhost:8000/api/v1/health
+        <code>{`curl http://localhost:3000/api/v1/health
 
 # Expected response:
 # {"status":"healthy","services":{...}}`}</code>
@@ -59,7 +59,7 @@ docker-compose ps`}</code>
       <h2>Step 5: Try Your First ForgeHook</h2>
       <p>Hash some data using the Crypto Service:</p>
       <pre className="bg-background-secondary p-4 rounded-lg">
-        <code>{`curl -X POST http://localhost:8000/api/v1/crypto/hash \\
+        <code>{`curl -X POST http://localhost:3000/api/v1/crypto/hash \\
   -H "Content-Type: application/json" \\
   -d '{"data": "Hello LeForge!", "algorithm": "sha256"}'
 

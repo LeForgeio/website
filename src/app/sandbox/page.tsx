@@ -105,7 +105,7 @@ const forgehooks = [
         model: "gpt-3.5-turbo",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: "What is workflow automation?" },
+          { role: "user", content: "What can LeForge help me build?" },
         ],
         max_tokens: 150,
       },
@@ -120,7 +120,7 @@ const forgehooks = [
             message: {
               role: "assistant",
               content:
-                "Workflow automation is the process of using technology to automate repetitive tasks...",
+                "LeForge helps you add AI, cryptography, and data processing to your low-code apps...",
             },
           },
         ],
@@ -159,7 +159,7 @@ const forgehooks = [
 
 export default function SandboxPage() {
   const [selectedHook, setSelectedHook] = useState(forgehooks[0]);
-  const [baseUrl, setBaseUrl] = useState("http://localhost:8000");
+  const [baseUrl, setBaseUrl] = useState("http://localhost:3000");
   const [apiKey, setApiKey] = useState("");
   const [requestBody, setRequestBody] = useState(forgehooks[0].defaultBody);
   const [response, setResponse] = useState("");
@@ -254,7 +254,7 @@ export default function SandboxPage() {
                 value={baseUrl}
                 onChange={(e) => setBaseUrl(e.target.value)}
                 className="w-full bg-background border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-                placeholder="http://localhost:8000"
+                placeholder="http://localhost:3000"
               />
             </div>
             <div>

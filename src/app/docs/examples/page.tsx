@@ -21,7 +21,7 @@ const examples = [
     description: "Extract data from invoice images using OCR, validate with math operations, and generate reports.",
     difficulty: "Beginner",
     forgehooks: ["OCR Service", "Math Service", "Data Transform"],
-    platform: "Make",
+    platform: "Power Automate",
     href: "/docs/examples/invoice-processing",
   },
   {
@@ -39,7 +39,7 @@ const examples = [
     description: "Resize, convert, and optimize images in batch with automatic watermarking.",
     difficulty: "Beginner",
     forgehooks: ["Image Service"],
-    platform: "Zapier",
+    platform: "ServiceNow",
     href: "/docs/examples/image-pipeline",
   },
   {
