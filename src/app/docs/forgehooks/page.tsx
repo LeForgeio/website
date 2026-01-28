@@ -127,57 +127,97 @@ const embeddableUtilities = [
     id: "string-utils",
     icon: "📝",
     name: "String Utils",
-    description: "Text manipulation including case conversion, trimming, padding, search/replace, splitting, and templating.",
-    functions: ["upperCase", "lowerCase", "trim", "pad", "replace", "split", "template"],
-    tags: ["Text", "Manipulation", "Templates"],
+    description: "17 text manipulation functions including case conversion, slugify, HTML sanitization, padding, and whitespace normalization.",
+    functions: ["slugify", "camelCase", "pascalCase", "snakeCase", "kebabCase", "truncate", "sanitizeHtml", "escapeHtml", "unescapeHtml", "capitalize", "titleCase", "wordCount", "reverse", "padLeft", "padRight", "removeWhitespace", "normalizeWhitespace"],
+    tags: ["Text", "Case Conversion", "HTML"],
   },
   {
     id: "date-utils",
     icon: "📅",
     name: "Date Utils",
-    description: "Date parsing, formatting, timezone conversion, date math, and duration calculations.",
-    functions: ["parse", "format", "convert", "add", "subtract", "diff", "isValid"],
-    tags: ["DateTime", "Timezone", "Formatting"],
+    description: "21 date manipulation functions including formatting, parsing, relative time, date math, and comparisons.",
+    functions: ["format", "parse", "now", "toISO", "toUnix", "fromUnix", "relativeTime", "addDays", "addHours", "addMinutes", "addMonths", "addYears", "diff", "startOf", "endOf", "isValid", "isBefore", "isAfter", "isBetween", "getWeekday", "getDaysInMonth"],
+    tags: ["DateTime", "Formatting", "Date Math"],
   },
   {
     id: "json-utils",
     icon: "📋",
     name: "JSON Utils",
-    description: "JSON manipulation with path queries, deep merge, flattening, diff comparison, and schema generation.",
-    functions: ["query", "merge", "flatten", "unflatten", "diff", "toSchema"],
-    tags: ["JSONPath", "Merge", "Query"],
+    description: "27 JSON manipulation functions including JSONPath queries, deep merge, diff/patch, validation, and array operations.",
+    functions: ["query", "get", "set", "has", "remove", "flatten", "unflatten", "merge", "deepMerge", "diff", "patch", "clone", "equals", "validate", "safeParse", "stringify", "format", "minify", "sortKeys", "pick", "omit", "transform", "filter", "map", "find", "groupBy", "keyBy"],
+    tags: ["JSONPath", "Merge", "Validation"],
   },
   {
     id: "uuid-utils",
     icon: "🔑",
     name: "UUID Utils",
-    description: "Generate and validate UUIDs (v1, v4, v5), decode timestamp from v1, and namespace-based generation.",
-    functions: ["v1", "v4", "v5", "validate", "decode", "namespace"],
-    tags: ["UUID", "GUID", "Unique IDs"],
+    description: "18 unique ID generation functions including UUID v1/v4/v5/v7, ULID, nanoid, snowflake IDs, and validation.",
+    functions: ["uuid", "uuidv1", "uuidv4", "uuidv5", "uuidv7", "ulid", "nanoid", "cuid2", "snowflake", "randomString", "randomHex", "randomBase64", "shortId", "isValidUUID", "isValidULID", "parseUUID", "parseULID", "nil"],
+    tags: ["UUID", "ULID", "Snowflake"],
   },
   {
     id: "encoding-utils",
     icon: "🔣",
     name: "Encoding Utils",
-    description: "Base64/URL encoding, hex conversion, HTML entity encoding, and URL-safe transformations.",
-    functions: ["base64Encode", "base64Decode", "urlEncode", "urlDecode", "hexEncode", "htmlEscape"],
-    tags: ["Base64", "URL", "Hex", "HTML"],
+    description: "21 encoding functions including Base64/URL encoding, hex, HTML entities, Unicode, JWT decoding, and ciphers.",
+    functions: ["base64Encode", "base64Decode", "base64UrlEncode", "base64UrlDecode", "hexEncode", "hexDecode", "urlEncode", "urlDecode", "htmlEncode", "htmlDecode", "unicodeEncode", "unicodeDecode", "jwtDecode", "jwtHeader", "jwtPayload", "stringToBytes", "bytesToString", "utf8ToBytes", "bytesToUtf8", "rot13", "caesar"],
+    tags: ["Base64", "JWT", "Hex", "URL"],
   },
   {
     id: "validation-utils",
     icon: "✅",
     name: "Validation Utils",
-    description: "Data validation for emails, URLs, phone numbers, credit cards, IBANs, and custom patterns.",
-    functions: ["isEmail", "isUrl", "isPhone", "isCreditCard", "isIban", "matches"],
-    tags: ["Email", "URL", "Phone", "Regex"],
+    description: "23 validation functions for emails, phones, URLs, UUIDs, IBANs, VAT numbers, credit cards, IPs, and batch validation.",
+    functions: ["isEmail", "isPhone", "isURL", "isUUID", "isIBAN", "isVATNumber", "isCreditCard", "getCreditCardType", "isPostalCode", "isIPv4", "isIPv6", "isMACAddress", "isHexColor", "isJSON", "isBase64", "isAlpha", "isAlphanumeric", "isNumeric", "isSlug", "isEmpty", "isLength", "matches", "validateAll"],
+    tags: ["Email", "Credit Card", "IBAN", "VAT"],
   },
   {
     id: "formula-engine",
     icon: "🧮",
     name: "Formula Engine",
-    description: "Spreadsheet-style formula evaluation with Excel-compatible functions, cell references, and named ranges.",
-    functions: ["evaluate", "SUM", "AVERAGE", "VLOOKUP", "IF", "CONCATENATE"],
-    tags: ["Excel", "Formulas", "Calculations"],
+    description: "150+ Excel-compatible functions across 6 categories: Math/Statistics, Logical, Text, Date/Time, Financial, and Lookup.",
+    functions: ["SUM", "AVERAGE", "COUNT", "MAX", "MIN", "IF", "VLOOKUP", "XLOOKUP", "INDEX", "MATCH", "CONCATENATE", "LEFT", "RIGHT", "DATE", "TODAY", "PMT", "NPV", "IRR"],
+    categories: {
+      math: "SUM, AVERAGE, COUNT, MAX, MIN, MEDIAN, STDEV, ROUND, POWER, LOG, SIN, COS, and 50+ more",
+      logical: "IF, IFS, SWITCH, AND, OR, NOT, XOR, IFERROR, ISBLANK, ISNUMBER, and 8 more",
+      text: "LEFT, RIGHT, MID, LEN, FIND, CONCAT, TRIM, UPPER, LOWER, SUBSTITUTE, and 17 more",
+      date: "TODAY, NOW, DATE, YEAR, MONTH, DAY, WEEKDAY, DATEDIF, EDATE, WORKDAY, and 13 more",
+      financial: "PMT, PV, FV, NPV, IRR, XIRR, RATE, NPER, SLN, DDB, and 10 more",
+      lookup: "VLOOKUP, HLOOKUP, XLOOKUP, INDEX, MATCH, CHOOSE, FILTER, SORT, UNIQUE, and 8 more"
+    },
+    tags: ["Excel", "150+ Functions", "Financial"],
+  },
+  {
+    id: "excel-utils",
+    icon: "📊",
+    name: "Excel Utils",
+    description: "30+ functions for parsing and generating Excel (XLSX) and CSV files locally without external APIs.",
+    functions: ["parseCSV", "stringifyCSV", "createWorkbook", "addWorksheet", "getWorksheet", "getWorksheetNames", "worksheetToCSV", "csvToWorksheet", "cellValue", "cellRange", "columnToLetter", "letterToColumn", "findInWorksheet", "filter", "sort", "pivot", "lookup", "merge", "split", "transpose", "columnStats", "sumColumn", "avgColumn", "countColumn", "minMaxColumn", "formatAsTable", "addFormula", "validateData", "removeDuplicates", "fillDown", "autoFitColumns"],
+    tags: ["XLSX", "CSV", "Spreadsheets", "Data"],
+  },
+  {
+    id: "qrcode-utils",
+    icon: "📱",
+    name: "QR Code Utils",
+    description: "Generate QR codes and barcodes locally. Supports text, SVG, HTML, and data URL outputs plus WiFi, vCard, and URL formats.",
+    functions: ["generateQR", "generateBarcode", "parseQRData", "formatWiFiQR", "formatVCardQR", "formatUrlQR", "formatEmailQR", "formatSmsQR", "formatGeoQR", "formatCalendarQR"],
+    tags: ["QR Code", "Barcode", "Code128", "EAN13"],
+  },
+  {
+    id: "content-filter",
+    icon: "🛡️",
+    name: "Content Filter",
+    description: "Profanity filtering and content moderation locally. Detect inappropriate content, spam, and basic sentiment analysis.",
+    functions: ["filterText", "containsProfanity", "analyzeSentiment", "detectSpam", "validateContent", "cleanText", "categorize", "getScore", "getSafeVersion", "detectLanguage"],
+    tags: ["Profanity", "Moderation", "Sentiment", "Spam"],
+  },
+  {
+    id: "lorem-utils",
+    icon: "📜",
+    name: "Lorem Utils",
+    description: "Generate placeholder text and fake data locally. Lorem ipsum, themed text (bacon, hipster, corporate), names, emails, addresses.",
+    functions: ["words", "sentences", "paragraphs", "characters", "classic", "themed", "bacon", "hipster", "corporate", "tech", "pirate", "name", "firstName", "lastName", "email", "phone", "company", "address", "city", "state", "zipCode", "fullAddress", "number", "boolean", "date", "uuid", "color", "pick", "pickMultiple", "generateArray", "setSeed", "resetSeed"],
+    tags: ["Lorem Ipsum", "Fake Data", "Placeholder", "Mock"],
   },
 ];
 
@@ -322,10 +362,12 @@ export default function ForgeHooksPage() {
                   </div>
                   
                   <div className="bg-background-secondary rounded-lg p-2">
-                    <p className="text-xs text-muted uppercase tracking-wide mb-1">Functions</p>
-                    <code className="text-xs text-foreground">
-                      {util.functions.slice(0, 4).join(", ")}
-                      {util.functions.length > 4 && "..."}
+                    <p className="text-xs text-muted uppercase tracking-wide mb-1">
+                      Functions ({util.functions.length}{util.id === "formula-engine" ? "+" : ""})
+                    </p>
+                    <code className="text-xs text-foreground wrap-break-word">
+                      {util.functions.slice(0, 8).join(", ")}
+                      {util.functions.length > 8 && `, +${util.functions.length - 8} more`}
                     </code>
                   </div>
                 </div>

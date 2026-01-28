@@ -71,21 +71,17 @@ export default function DocsPage() {
       <div className="mt-16 p-8 bg-card border border-border rounded-xl">
         <h2 className="text-2xl font-bold mb-4">Quick Start</h2>
         <p className="text-muted mb-6">
-          Get LeForge running on your machine in under 5 minutes:
+          Get LeForge running on your machine with a single command:
         </p>
         <pre className="bg-background-secondary p-4 rounded-lg overflow-x-auto">
-          <code className="text-sm">{`# Clone the repository
-git clone https://github.com/LeForgeio/leforge.git
-cd leforge
-
-# Copy environment file
-cp .env.example .env
-
-# Start all services
-docker-compose up -d
+          <code className="text-sm">{`# One-line deploy
+docker run -d -p 4000:4000 --name leforge leforge/leforge:latest
 
 # Test the API
-curl http://localhost:8000/api/v1/health`}</code>
+curl http://localhost:4000/api/v1/health
+
+# MCP endpoint for AI agents
+curl http://localhost:4000/api/v1/mcp/tools`}</code>
         </pre>
       </div>
     </div>

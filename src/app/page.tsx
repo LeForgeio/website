@@ -31,6 +31,10 @@ const embeddableUtils = [
   { icon: "🔣", name: "Encoding Utils", desc: "Base64, URL, hex encoding" },
   { icon: "✅", name: "Validation Utils", desc: "Email, URL, phone validation" },
   { icon: "🧮", name: "Formula Engine", desc: "Excel-style formula evaluation" },
+  { icon: "📊", name: "Excel Utils", desc: "Parse and generate XLSX/CSV" },
+  { icon: "📱", name: "QR Code Utils", desc: "Generate QR codes and barcodes" },
+  { icon: "🛡️", name: "Content Filter", desc: "Profanity and spam detection" },
+  { icon: "📜", name: "Lorem Utils", desc: "Placeholder text and fake data" },
 ];
 
 const localAIConnectors = [
@@ -43,8 +47,8 @@ const localAIConnectors = [
 const features = [
   { icon: "🏠", title: "100% Self-Hosted", desc: "Your data never leaves your infrastructure. Deploy on-premise or your own cloud." },
   { icon: "🔒", title: "Secure by Default", desc: "API key auth, CORS protection, rate limiting, input validation on all endpoints." },
-  { icon: "📈", title: "Horizontally Scalable", desc: "Each ForgeHook scales independently. Run one instance or hundreds with K8s." },
-  { icon: "📊", title: "Observable", desc: "Prometheus metrics, structured JSON logging, request tracing across all services." },
+  { icon: "🤖", title: "MCP Protocol", desc: "Native Model Context Protocol support. AI agents auto-discover and use your plugins." },
+  { icon: "📦", title: "Single Container", desc: "One Docker container runs everything — app, database, cache. Zero complexity." },
   { icon: "🔌", title: "Universal API", desc: "RESTful endpoints work with any platform that can make HTTP requests." },
   { icon: "📚", title: "Well Documented", desc: "OpenAPI specs, SDK documentation, and examples for every ForgeHook." },
 ];
@@ -99,9 +103,9 @@ export default function Home() {
       <section className="py-12 border-y border-border bg-background-secondary">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-12 md:gap-24">
           {[
-            { value: "19", label: "ForgeHook Plugins" },
+            { value: "23", label: "ForgeHook Plugins" },
             { value: "8+", label: "Platform Integrations" },
-            { value: "100%", label: "Self-Hosted" },
+            { value: "MCP", label: "AI Agent Protocol" },
             { value: "MIT", label: "Open Source License" },
           ].map((item) => (
             <div key={item.label} className="text-center">
@@ -159,7 +163,7 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {embeddableUtils.map((util) => (
                 <div key={util.name} className="bg-card border border-border rounded-xl p-4 hover:border-green-500/50 transition-all text-center">
                   <div className="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center text-xl mx-auto mb-2">
@@ -199,7 +203,7 @@ export default function Home() {
           
           <div className="text-center mt-8">
             <Link href="/docs/forgehooks" className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium transition-colors inline-flex items-center gap-2">
-              View All 19 ForgeHooks →
+              View All 23 ForgeHooks →
             </Link>
           </div>
         </div>
@@ -215,8 +219,8 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-12">
             {[
-              { num: "1", title: "Deploy with Docker", desc: "Single command deployment. docker-compose up and you're running all services instantly." },
-              { num: "2", title: "Connect Your Platform", desc: "Add LeForge nodes to n8n, configure custom connectors in Power Automate, or use REST API with any platform." },
+              { num: "1", title: "One Container Deploy", desc: "docker run leforge/leforge — that's it. Single container with app, database, and cache built-in." },
+              { num: "2", title: "Connect Your Platform", desc: "Add LeForge nodes to n8n, configure custom connectors in Power Automate, or let AI agents discover via MCP." },
               { num: "3", title: "Build Powerful Apps", desc: "Combine AI, data processing, and automation. Your low-code apps now have compute superpowers." },
             ].map((step) => (
               <div key={step.num} className="text-center">
@@ -279,6 +283,72 @@ export default function Home() {
               <div className="flex justify-center mb-3"><RestApiLogo /></div>
               <h3 className="font-semibold mb-1">Any HTTP</h3>
               <p className="text-muted text-sm">REST API</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MCP / AI Agents Section */}
+      <section className="py-24 bg-background-secondary">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-4 py-2 rounded-full text-sm font-medium border border-purple-500/20 mb-6">
+                🤖 AI Agent Ready
+              </span>
+              <h2 className="text-4xl font-bold mb-4">Native MCP Support</h2>
+              <p className="text-muted text-lg mb-6">
+                LeForge implements the <strong>Model Context Protocol (MCP)</strong> — the open standard for AI agents.
+                Claude, GPT, Cursor, and other AI assistants can automatically discover and use your ForgeHooks.
+              </p>
+              <ul className="space-y-3 text-muted">
+                <li className="flex items-start gap-3">
+                  <span className="text-purple-400">✓</span>
+                  <span>Auto-discovery of all installed plugins as MCP tools</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-purple-400">✓</span>
+                  <span>JSON-RPC 2.0 and SSE streaming support</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-purple-400">✓</span>
+                  <span>Built-in prompts for workflow building assistance</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-purple-400">✓</span>
+                  <span>Resources API for plugin metadata and schemas</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6">
+              <div className="text-sm text-muted mb-3">// AI agents connect via MCP</div>
+              <pre className="text-sm overflow-x-auto">
+                <code className="text-foreground">{`// MCP endpoint for AI agents
+GET /mcp
+
+// List available tools
+GET /api/v1/mcp/tools
+{
+  "tools": [
+    {
+      "name": "crypto__hash",
+      "description": "Hash data with SHA256/512"
+    },
+    {
+      "name": "llm__chat",
+      "description": "AI chat completions"
+    },
+    // ... all ForgeHooks as tools
+  ]
+}
+
+// AI agent calls a tool
+POST /api/v1/mcp/tools/crypto__hash/call
+{
+  "data": "Hello World",
+  "algorithm": "sha256"
+}`}</code>
+              </pre>
             </div>
           </div>
         </div>
