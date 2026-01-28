@@ -1,5 +1,15 @@
 import Link from "next/link";
 import ConstructionGate from "@/components/ConstructionGate";
+import { 
+  N8nLogo, 
+  PowerAutomateLogo, 
+  ServiceNowLogo, 
+  SalesforceLogo, 
+  NintexLogo, 
+  NintexK2Logo, 
+  MendixLogo, 
+  RestApiLogo 
+} from "@/components/PlatformLogos";
 
 const forgeHooks = [
   { icon: "🤖", name: "LLM Service", desc: "Chat completions, embeddings via OpenAI API or local models like Ollama", tags: ["GPT-4", "Ollama", "Claude"] },
@@ -12,16 +22,6 @@ const forgeHooks = [
   { icon: "🔄", name: "Data Transform", desc: "Convert JSON, XML, CSV, YAML with queries and validation", tags: ["JSONPath", "XSLT"] },
 ];
 
-const platforms = [
-  { icon: "🔄", name: "n8n", desc: "Community nodes" },
-  { icon: "⚡", name: "Power Automate", desc: "Custom connectors" },
-  { icon: "🎫", name: "ServiceNow", desc: "Flow Designer" },
-  { icon: "☁️", name: "Salesforce", desc: "Flow actions" },
-  { icon: "📋", name: "Nintex CE", desc: "Cloud & on-prem" },
-  { icon: "🔷", name: "Nintex K2", desc: "Cloud & on-prem" },
-  { icon: "🏢", name: "Mendix", desc: "Microflows" },
-  { icon: "💡", name: "Any HTTP", desc: "REST API" },
-];
 
 const features = [
   { icon: "🏠", title: "100% Self-Hosted", desc: "Your data never leaves your infrastructure. Deploy on-premise or your own cloud." },
@@ -66,13 +66,13 @@ export default function Home() {
           
           <div className="flex items-center justify-center gap-4 text-muted">
             <span>Works with:</span>
-            <div className="flex gap-4 text-2xl">
-              <span title="n8n">🔄</span>
-              <span title="Power Automate">⚡</span>
-              <span title="ServiceNow">🎫</span>
-              <span title="Nintex">📋</span>
-              <span title="Salesforce">☁️</span>
-              <span title="Mendix">🏢</span>
+            <div className="flex gap-3">
+              <N8nLogo className="w-8 h-8" />
+              <PowerAutomateLogo className="w-8 h-8" />
+              <ServiceNowLogo className="w-8 h-8" />
+              <NintexLogo className="w-8 h-8" />
+              <SalesforceLogo className="w-8 h-8" />
+              <MendixLogo className="w-8 h-8" />
             </div>
           </div>
         </div>
@@ -165,13 +165,46 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-            {platforms.map((platform) => (
-              <div key={platform.name} className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
-                <div className="text-4xl mb-3">{platform.icon}</div>
-                <h3 className="font-semibold mb-1">{platform.name}</h3>
-                <p className="text-muted text-sm">{platform.desc}</p>
-              </div>
-            ))}
+            <div className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
+              <div className="flex justify-center mb-3"><N8nLogo /></div>
+              <h3 className="font-semibold mb-1">n8n</h3>
+              <p className="text-muted text-sm">Community nodes</p>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
+              <div className="flex justify-center mb-3"><PowerAutomateLogo /></div>
+              <h3 className="font-semibold mb-1">Power Automate</h3>
+              <p className="text-muted text-sm">Custom connectors</p>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
+              <div className="flex justify-center mb-3"><ServiceNowLogo /></div>
+              <h3 className="font-semibold mb-1">ServiceNow</h3>
+              <p className="text-muted text-sm">Flow Designer</p>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
+              <div className="flex justify-center mb-3"><SalesforceLogo /></div>
+              <h3 className="font-semibold mb-1">Salesforce</h3>
+              <p className="text-muted text-sm">Flow actions</p>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
+              <div className="flex justify-center mb-3"><NintexLogo /></div>
+              <h3 className="font-semibold mb-1">Nintex CE</h3>
+              <p className="text-muted text-sm">Cloud & on-prem</p>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
+              <div className="flex justify-center mb-3"><NintexK2Logo /></div>
+              <h3 className="font-semibold mb-1">Nintex K2</h3>
+              <p className="text-muted text-sm">Cloud & on-prem</p>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
+              <div className="flex justify-center mb-3"><MendixLogo /></div>
+              <h3 className="font-semibold mb-1">Mendix</h3>
+              <p className="text-muted text-sm">Microflows</p>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
+              <div className="flex justify-center mb-3"><RestApiLogo /></div>
+              <h3 className="font-semibold mb-1">Any HTTP</h3>
+              <p className="text-muted text-sm">REST API</p>
+            </div>
           </div>
         </div>
       </section>
