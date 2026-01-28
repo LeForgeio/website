@@ -17,6 +17,8 @@ const platforms = [
   { icon: "⚡", name: "Power Automate", desc: "Custom connectors" },
   { icon: "🎫", name: "ServiceNow", desc: "Flow Designer" },
   { icon: "☁️", name: "Salesforce", desc: "Flow actions" },
+  { icon: "📋", name: "Nintex CE", desc: "Cloud & on-prem" },
+  { icon: "🔷", name: "Nintex K2", desc: "Cloud & on-prem" },
   { icon: "🏢", name: "Mendix", desc: "Microflows" },
   { icon: "💡", name: "Any HTTP", desc: "REST API" },
 ];
@@ -47,7 +49,7 @@ export default function Home() {
           </h1>
           
           <p className="text-xl text-muted max-w-2xl mx-auto mb-10">
-            LeForge extends n8n, Power Automate, ServiceNow, and more with powerful AI, cryptography, math, and data processing capabilities. Deploy on your own infrastructure.
+            LeForge extends n8n, Power Automate, ServiceNow, Nintex, and more with powerful AI, cryptography, math, and data processing capabilities. Deploy on your own infrastructure.
           </p>
           
           <div className="flex flex-wrap gap-4 justify-center mb-12">
@@ -68,6 +70,7 @@ export default function Home() {
               <span title="n8n">🔄</span>
               <span title="Power Automate">⚡</span>
               <span title="ServiceNow">🎫</span>
+              <span title="Nintex">📋</span>
               <span title="Salesforce">☁️</span>
               <span title="Mendix">🏢</span>
             </div>
@@ -161,7 +164,7 @@ export default function Home() {
             <p className="text-muted text-lg">Pre-built nodes and modules for popular workflow automation platforms.</p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
             {platforms.map((platform) => (
               <div key={platform.name} className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary transition-colors">
                 <div className="text-4xl mb-3">{platform.icon}</div>

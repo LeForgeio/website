@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Integrations - LeForge",
-  description: "Connect LeForge to n8n, Power Automate, ServiceNow, Salesforce, and more.",
+  description: "Connect LeForge to n8n, Power Automate, ServiceNow, Nintex, Salesforce, and more.",
 };
 
 const integrations = [
@@ -43,6 +43,24 @@ const integrations = [
     docLink: "/docs/integrations/salesforce",
   },
   {
+    id: "nintex-ce",
+    name: "Nintex CE",
+    icon: "📋",
+    description: "Nintex Automation Cloud - works with cloud and on-premise deployments.",
+    status: "Available",
+    installMethod: "Xtension / Web Request",
+    docLink: "/docs/integrations/nintex-ce",
+  },
+  {
+    id: "nintex-k2",
+    name: "Nintex K2",
+    icon: "🔷",
+    description: "Nintex K2 platform - deploy LeForge online or fully offline.",
+    status: "Available",
+    installMethod: "Service Broker / REST",
+    docLink: "/docs/integrations/nintex-k2",
+  },
+  {
     id: "mendix",
     name: "Mendix",
     icon: "🏢",
@@ -54,20 +72,11 @@ const integrations = [
   {
     id: "outsystems",
     name: "OutSystems",
-    icon: "🔷",
+    icon: "🔶",
     description: "Enterprise low-code platform with REST API consumption.",
     status: "Available",
     installMethod: "REST API",
     docLink: "/docs/integrations/outsystems",
-  },
-  {
-    id: "nintex",
-    name: "Nintex",
-    icon: "📋",
-    description: "Process automation and workflow management platform.",
-    status: "Available",
-    installMethod: "Web Request",
-    docLink: "/docs/integrations/nintex",
   },
   {
     id: "rest-api",
