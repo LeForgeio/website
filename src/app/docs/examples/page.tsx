@@ -60,6 +60,24 @@ const examples = [
     platform: "n8n",
     href: "/docs/examples/semantic-search",
   },
+  {
+    id: "contract-analysis",
+    title: "AI Contract Analysis",
+    description: "Extract key terms, dates, and obligations from legal contracts using LLM with structured output.",
+    difficulty: "Intermediate",
+    forgehooks: ["LLM Service", "PDF Service", "Data Transform"],
+    platform: "Nintex CE",
+    href: "/docs/examples/contract-analysis",
+  },
+  {
+    id: "form-validation",
+    title: "Smart Form Validation",
+    description: "Validate submitted form data with regex patterns, calculations, and AI-powered data enrichment.",
+    difficulty: "Beginner",
+    forgehooks: ["Validation Utils", "Math Service", "LLM Service"],
+    platform: "Nintex K2",
+    href: "/docs/examples/form-validation",
+  },
 ];
 
 const difficultyColors: Record<string, string> = {
@@ -73,8 +91,8 @@ export default function ExamplesPage() {
     <div>
       <h1 className="text-4xl font-bold mb-4">Examples</h1>
       <p className="text-xl text-muted mb-12">
-        Learn by example with real-world workflow patterns that showcase 
-        LeForge&apos;s capabilities.
+        Learn by example with real-world patterns that showcase 
+        LeForge&apos;s capabilities across different platforms.
       </p>
 
       <div className="space-y-6">
@@ -115,7 +133,7 @@ export default function ExamplesPage() {
       <div className="mt-12 p-6 bg-primary/10 border border-primary/20 rounded-xl">
         <h2 className="text-xl font-semibold mb-2">🧪 Try it yourself</h2>
         <p className="text-muted mb-4">
-          Test ForgeHook APIs in the sandbox before building your workflow.
+          Test ForgeHook APIs in the sandbox before building your app.
         </p>
         <Link
           href="/sandbox"
