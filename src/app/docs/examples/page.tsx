@@ -79,6 +79,15 @@ const examples = [
     href: "/docs/examples/nintex-forms-plugin",
   },
   {
+    id: "nintex-forms-calculator",
+    title: "Dynamic Forms Calculator",
+    description: "Build a lightweight Forms plugin with Excel-style formulas, date calculations, and real-time field formatting — no Docker required.",
+    difficulty: "Beginner",
+    forgehooks: ["Formula Engine", "Date Utils", "String Utils"],
+    platform: "Nintex CE",
+    href: "/docs/examples/nintex-forms-calculator",
+  },
+  {
     id: "form-validation",
     title: "Smart Form Validation",
     description: "Validate submitted form data with regex patterns, calculations, and AI-powered data enrichment.",
