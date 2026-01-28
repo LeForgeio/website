@@ -10,7 +10,7 @@ const integrations = [
     id: "n8n",
     name: "n8n",
     icon: "🔄",
-    description: "Self-hosted workflow automation with community nodes for LeForge.",
+    description: "Self-hosted automation with community nodes for LeForge.",
     status: "Available",
     installMethod: "Community Nodes",
     docLink: "/docs/integrations/n8n",
@@ -94,7 +94,7 @@ export default function IntegrationsPage() {
     <div>
       <h1 className="text-4xl font-bold mb-4">Integrations</h1>
       <p className="text-xl text-muted mb-12">
-        Connect LeForge to your favorite workflow automation platforms with 
+        Connect LeForge to your favorite low-code and automation platforms with 
         pre-built nodes, modules, and connectors.
       </p>
 

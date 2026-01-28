@@ -88,3 +88,27 @@ a {
 a:hover {
   color: var(--color-primary-light);
 }
+
+/* Button base styles */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Fix Tailwind hover states for theme colors */
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.hover\:bg-primary-dark:hover {
+  background-color: var(--color-primary-dark) !important;
+}
+
+.hover\:bg-primary:hover {
+  background-color: var(--color-primary) !important;
+}

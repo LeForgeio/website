@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Documentation - LeForge",
-  description: "Learn how to deploy and use LeForge to supercharge your workflow automation.",
+  description: "Learn how to deploy and use LeForge to supercharge your low-code apps and automations.",
 };
 
 const sections = [
   {
     icon: "🚀",
     title: "Getting Started",
-    description: "Deploy LeForge and start building powerful workflows in minutes.",
+    description: "Deploy LeForge and start building powerful apps in minutes.",
     href: "/docs/getting-started",
   },
   {
@@ -33,7 +33,7 @@ const sections = [
   {
     icon: "💡",
     title: "Examples",
-    description: "Real-world workflow examples and patterns to get you inspired.",
+    description: "Real-world examples and patterns to get you inspired.",
     href: "/docs/examples",
   },
   {
