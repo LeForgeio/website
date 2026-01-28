@@ -55,13 +55,13 @@ export default function ConstructionGate({ children }: { children: React.ReactNo
         </h1>
         
         <p className="text-muted text-lg mb-8">
-          We&apos;re building something powerful. Supercharge your workflows with AI & compute capabilities.
+          We&apos;re building something powerful. Supercharge your low-code apps with AI & compute capabilities.
         </p>
 
         {/* Email signup teaser */}
         <div className="bg-card border border-border rounded-xl p-6 mb-8">
           <p className="text-sm text-muted mb-4">
-            Self-hosted workflow automation plugins for n8n, Make, Power Automate, and more.
+            Self-hosted plugins for n8n, Power Automate, ServiceNow, Nintex, Salesforce, Mendix, and more.
           </p>
           <div className="flex gap-2 text-3xl justify-center">
             <span>🤖</span>

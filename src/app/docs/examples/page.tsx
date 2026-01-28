@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Examples - LeForge",
-  description: "Real-world workflow examples and patterns using LeForge.",
+  description: "Real-world examples and patterns using LeForge.",
 };
 
 const examples = [

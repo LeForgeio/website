@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Getting Started - LeForge",
-  description: "Deploy LeForge and start building powerful workflows in minutes.",
+  description: "Deploy LeForge and start building powerful apps in minutes.",
 };
 
 export default function GettingStartedPage() {
@@ -73,7 +73,7 @@ docker-compose ps`}</code>
           LeForge is now running. Next, explore the{" "}
           <a href="/docs/forgehooks" className="text-primary hover:underline">ForgeHook plugins</a>{" "}
           or connect your{" "}
-          <a href="/docs/integrations" className="text-primary hover:underline">workflow platform</a>.
+          <a href="/docs/integrations" className="text-primary hover:underline">low-code platform</a>.
         </p>
       </div>
 

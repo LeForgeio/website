@@ -45,7 +45,7 @@ const features = [
   { icon: "🔒", title: "Secure by Default", desc: "API key auth, CORS protection, rate limiting, input validation on all endpoints." },
   { icon: "📈", title: "Horizontally Scalable", desc: "Each ForgeHook scales independently. Run one instance or hundreds with K8s." },
   { icon: "📊", title: "Observable", desc: "Prometheus metrics, structured JSON logging, request tracing across all services." },
-  { icon: "🔌", title: "API Gateway", desc: "Kong Gateway handles routing, authentication, rate limiting, and caching." },
+  { icon: "🔌", title: "Universal API", desc: "RESTful endpoints work with any platform that can make HTTP requests." },
   { icon: "📚", title: "Well Documented", desc: "OpenAPI specs, SDK documentation, and examples for every ForgeHook." },
 ];
 
@@ -61,12 +61,12 @@ export default function Home() {
           </span>
           
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-            Supercharge Your Workflows<br />
+            Supercharge Your Apps<br />
             with <span className="text-primary">AI & Compute</span>
           </h1>
           
           <p className="text-xl text-muted max-w-2xl mx-auto mb-10">
-            LeForge extends n8n, Power Automate, ServiceNow, Nintex, and more with powerful AI, cryptography, math, and data processing capabilities. Deploy on your own infrastructure.
+            LeForge extends low-code platforms like n8n, Power Automate, ServiceNow, Nintex, Salesforce, and Mendix with powerful AI, cryptography, math, and data processing capabilities. Deploy on your own infrastructure.
           </p>
           
           <div className="flex flex-wrap gap-4 justify-center mb-12">
@@ -215,9 +215,9 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-12">
             {[
-              { num: "1", title: "Deploy with Docker", desc: "Single command deployment. docker-compose up and you're running all services with Kong API Gateway." },
-              { num: "2", title: "Install Platform Nodes", desc: "Add LeForge nodes to n8n, configure custom connectors in Power Automate, or use REST API with any platform." },
-              { num: "3", title: "Build Powerful Workflows", desc: "Combine AI, data processing, and automation. Your workflows now have compute superpowers." },
+              { num: "1", title: "Deploy with Docker", desc: "Single command deployment. docker-compose up and you're running all services instantly." },
+              { num: "2", title: "Connect Your Platform", desc: "Add LeForge nodes to n8n, configure custom connectors in Power Automate, or use REST API with any platform." },
+              { num: "3", title: "Build Powerful Apps", desc: "Combine AI, data processing, and automation. Your low-code apps now have compute superpowers." },
             ].map((step) => (
               <div key={step.num} className="text-center">
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
@@ -236,7 +236,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Native Platform Integrations</h2>
-            <p className="text-muted text-lg">Pre-built nodes and modules for popular workflow automation platforms.</p>
+            <p className="text-muted text-lg">Pre-built nodes and modules for popular low-code and automation platforms.</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
@@ -311,9 +311,9 @@ export default function Home() {
       {/* CTA */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-6">Ready to Supercharge Your Workflows?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready to Supercharge Your Apps?</h2>
           <p className="text-muted text-lg max-w-xl mx-auto mb-10">
-            Join developers building smarter automations with LeForge. Free and open source forever.
+            Join developers building smarter low-code apps and automations with LeForge. Free and open source forever.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/docs/getting-started" className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-all hover:-translate-y-0.5 flex items-center gap-2">
