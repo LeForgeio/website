@@ -9,51 +9,30 @@ const navigation = [
     items: [
       { title: "Introduction", href: "/docs" },
       { title: "Quick Start", href: "/docs/getting-started" },
-      { title: "Installation", href: "/docs/getting-started/installation" },
-      { title: "Configuration", href: "/docs/getting-started/configuration" },
     ],
   },
   {
     title: "ForgeHooks",
     items: [
       { title: "Overview", href: "/docs/forgehooks" },
-      { title: "LLM Service", href: "/docs/forgehooks/llm" },
-      { title: "Crypto Service", href: "/docs/forgehooks/crypto" },
-      { title: "Math Service", href: "/docs/forgehooks/math" },
-      { title: "PDF Service", href: "/docs/forgehooks/pdf" },
-      { title: "OCR Service", href: "/docs/forgehooks/ocr" },
-      { title: "Image Service", href: "/docs/forgehooks/image" },
-      { title: "Vector Service", href: "/docs/forgehooks/vector" },
-      { title: "Data Transform", href: "/docs/forgehooks/data-transform" },
     ],
   },
   {
     title: "API Reference",
     items: [
       { title: "Overview", href: "/docs/api" },
-      { title: "Authentication", href: "/docs/api/authentication" },
-      { title: "Rate Limiting", href: "/docs/api/rate-limiting" },
-      { title: "Error Handling", href: "/docs/api/errors" },
     ],
   },
   {
     title: "Integrations",
     items: [
       { title: "Overview", href: "/docs/integrations" },
-      { title: "n8n", href: "/docs/integrations/n8n" },
-      { title: "Make", href: "/docs/integrations/make" },
-      { title: "Power Automate", href: "/docs/integrations/power-automate" },
-      { title: "Zapier", href: "/docs/integrations/zapier" },
-      { title: "ServiceNow", href: "/docs/integrations/servicenow" },
     ],
   },
   {
     title: "Examples",
     items: [
       { title: "Overview", href: "/docs/examples" },
-      { title: "Chat with PDF", href: "/docs/examples/chat-pdf" },
-      { title: "Invoice Processing", href: "/docs/examples/invoice-processing" },
-      { title: "Document Translation", href: "/docs/examples/translation" },
     ],
   },
 ];
