@@ -392,7 +392,7 @@ export default function SandboxPage() {
                 )}
               </div>
               <div className="p-4">
-                <pre className="bg-background rounded-lg p-4 overflow-x-auto min-h-[200px]">
+                <pre className="bg-background rounded-lg p-4 overflow-x-auto min-h-50">
                   <code className="text-sm">
                     {response || "// Response will appear here"}
                   </code>
