@@ -3,6 +3,17 @@
 import { useState, useEffect, startTransition } from "react";
 
 const SITE_PASSWORD = "leforge2026"; // Change this to your preferred password
+const COOKIE_NAME = "leforge_preview_access";
+
+function setCookie(name: string, value: string, days: number) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+}
+
+function getCookie(name: string): string | null {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? match[2] : null;
+}
 
 export default function ConstructionGate({ children }: { children: React.ReactNode }) {
   const [isUnlocked, setIsUnlocked] = useState<boolean | null>(null);
@@ -10,16 +21,19 @@ export default function ConstructionGate({ children }: { children: React.ReactNo
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    // Check localStorage on mount only
-    const unlocked = localStorage.getItem("leforge_unlocked") === "true";
+    // Check both cookie and localStorage on mount
+    const cookieUnlocked = getCookie(COOKIE_NAME) === "true";
+    const localUnlocked = localStorage.getItem("leforge_unlocked") === "true";
     startTransition(() => {
-      setIsUnlocked(unlocked);
+      setIsUnlocked(cookieUnlocked || localUnlocked);
     });
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === SITE_PASSWORD) {
+      // Set both cookie (for middleware) and localStorage (for client)
+      setCookie(COOKIE_NAME, "true", 30); // 30 days
       localStorage.setItem("leforge_unlocked", "true");
       setIsUnlocked(true);
       setError(false);
