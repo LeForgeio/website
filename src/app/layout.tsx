@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import ConstructionGate from "@/components/ConstructionGate";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -117,11 +118,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header />
-        <main className="pt-16">
-          {children}
-        </main>
-        <Footer />
+        <ConstructionGate>
+          <Header />
+          <main className="pt-16">
+            {children}
+          </main>
+          <Footer />
+        </ConstructionGate>
       </body>
     </html>
   );

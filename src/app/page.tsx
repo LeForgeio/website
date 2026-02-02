@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ConstructionGate from "@/components/ConstructionGate";
 import { 
   N8nLogo, 
   PowerAutomateLogo, 
@@ -55,7 +54,6 @@ const features = [
 
 export default function Home() {
   return (
-    <ConstructionGate>
     <div className="gradient-mesh">
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden">
@@ -399,6 +397,6 @@ POST /api/v1/mcp/tools/crypto__hash/call
         </div>
       </section>
     </div>
-    </ConstructionGate>
+
   );
 }
